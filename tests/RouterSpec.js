@@ -1,10 +1,6 @@
 describe('Router spec', function() {
-  var router, callback;
-
-  beforeEach(function() {
-    router = Tectonic.Pjax.Router;
-    callback = function() {};
-  });
+  var router = Tectonic.Pjax.Router;
+  var callback = function() {};
 
   it('should register get routes', function() {
     router.get('users', callback);
@@ -44,5 +40,12 @@ describe('Router spec', function() {
     expect(routes.length).toBe(4);
     expect(routes[3].pattern).toEqual('cats');
     expect(routes[3].method).toEqual('delete');
+  });
+
+  it('should match based on pattern requirements', function() {
+    expect(router.match('users', 'get').length).toBe(1);
+    expect(router.match('cubs', 'post').length).toBe(1);
+    expect(router.match('dogs', 'put').length).toBe(1);
+    expect(router.match('cats', 'delete').length).toBe(1);
   });
 });
