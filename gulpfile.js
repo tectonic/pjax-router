@@ -10,7 +10,7 @@ var scripts = ['src/Eventer.js', 'src/Route.js', 'src/Router.js'];
 
 gulp.task('scripts', function() {
   return gulp.src(scripts)
-    .pipe(concat('pjax-router.dev.js'))
+    .pipe(concat('pjax-router.js'))
     .pipe(gulp.dest('.'))
     .pipe(rename('pjax-router.min.js'))
     .pipe(uglify({mangle: true}))
