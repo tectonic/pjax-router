@@ -43,7 +43,7 @@ Secondly, our route is now supporting url arguments. In this case its an id, and
 
 ## Examples
 
-We think it's best to learn from examples, so check them out over at our [Examples page](/wiki/Examples).
+We think it's best to learn from examples, so check them out over at our [examples page](https://github.com/tectonic/pjax-router/wiki/Examples).
 
 ## License
 
