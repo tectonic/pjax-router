@@ -5,6 +5,7 @@ describe('Route spec', function() {
     it('should set the required public properties and methods', function() {
       var routeObject = Tectonic.Pjax.Route('some-url', 'get', callback);
 
+      expect(routeObject.pattern).toEqual('some-url');
       expect(routeObject.regex).toEqual(/some-url/);
       expect(routeObject.method).toEqual('get');
       expect(routeObject.handler).toEqual(callback);

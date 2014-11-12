@@ -56,11 +56,10 @@ var Tectonic = Tectonic || {Pjax: {}};
 
     // Our private properties
     var regex = regexify(pattern);
-    var method = method;
-    var handler = handler;
 
     // Return the object developers can work with
     return {
+      pattern: pattern,
       regex: regex,
       method: method,
       handler: handler,
