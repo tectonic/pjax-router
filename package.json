@@ -1,0 +1,30 @@
+{
+  "name": "pjax-router",
+  "version": "1.0.0",
+  "description": "Front-end javascript router to be paired with jquery-pjax.",
+  "main": "",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-jquery": "^2.0.5",
+    "karma": "^0.12.24",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.2.3",
+    "karma-jasmine-jquery": "^0.1.1",
+    "mocha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "jquery",
+    "pjax",
+    "router",
+    "routing",
+    "route"
+  ],
+  "author": "Kirk Bushell",
+  "license": "MIT"
+}
