@@ -25,7 +25,21 @@ router.get('users', usersHandler);
 ```
 
 The code above registers a new usersHandler that will be called when the request is returned from the server for GET /users/. Your function
-can then implement front-end logic that is specific to that request/view combination.
+can then implement front-end logic that is specific to that request/view combination. This will probably make more sense however, where functionality is heavier:
+
+```javascript
+var userHandler = function(id) {
+    $('form#user').submit(function() {
+        new FormValidator(this);    
+    });
+};
+
+router.get('users/:id', userHandler);
+```
+
+There's a few new things here. First and foremost - there's some logic. In this case whenever we're viewing a user, we've also been sent back a bunch of HTML that represents a form. Here we're binding the submit event to a form validation library, which could handle the various fields, and however it wants to deal with the validation itself.
+
+Secondly, our route is now supporting url arguments. In this case its an id, and when the route matches, our route handler will be passed the id that was provided as part of the URL. Cool, huh?
 
 ## License
 
