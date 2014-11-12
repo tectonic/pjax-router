@@ -84,7 +84,7 @@ var Tectonic = Tectonic || {Pjax: {}};
      */
     var resource = function(name, handler) {
       var idPattern = name+'/:id';
-      
+
       get(name, handler);
       post(name, handler);
       del(idPattern, handler);
