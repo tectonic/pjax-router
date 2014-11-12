@@ -48,4 +48,10 @@ describe('Router spec', function() {
     expect(router.match('dogs', 'put').length).toBe(1);
     expect(router.match('cats', 'delete').length).toBe(1);
   });
+
+  it('should throw an exception when match behaviour is set to an invalid value', function() {
+    expect(function(){router.setMatchBehaviour('gawd')}).toThrow(new Error('Invalid value for router match behaviour. Available options are: single, all.'));
+    expect(function(){router.setMatchBehaviour('single')}).not.toThrow();
+    expect(function(){router.setMatchBehaviour('all')}).not.toThrow();
+  });
 });

@@ -96,9 +96,10 @@ var Tectonic = Tectonic || {Pjax: {}};
      * @param {string} behaviour
      */
     var setMatchBehaviour = function(behaviour) {
-      if (behaviour != 'single' || behaviour != 'all') {
+      if (behaviour != 'single' && behaviour != 'all') {
         throw new Error('Invalid value for router match behaviour. Available options are: single, all.')
       }
+
       matchBehaviour = behaviour;
     };
 
