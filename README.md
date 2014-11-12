@@ -12,7 +12,7 @@ Simply download the pjax-router.min.js file and load that in your HTML document.
 
 PJAX Router comes with the Tectonic.Pjax.Router class, allowing you to register routes that will respond to various calls.
 
-'''javascript
+```javascript
 var usersHandler = function() {
     // do stuff
 };
@@ -22,7 +22,7 @@ var router = Tectonic.Pjax.Router;
 
 // Define the handler that will respond to "get" requests against the /users/ endpoint
 router.get('users', usersHandler);
-'''
+```
 
 The code above registers a new usersHandler that will be called when the request is returned from the server for GET /users/. Your function
 can then implement front-end logic that is specific to that request/view combination.
