@@ -53,7 +53,7 @@ var Tectonic = Tectonic || {Pjax: {}};
      * @param {string} pattern
      * @param {function} handler
      */
-    var deletion = function(pattern, handler) {
+    var del = function(pattern, handler) {
       add(pattern, 'delete', handler);
     };
 
@@ -65,6 +65,32 @@ var Tectonic = Tectonic || {Pjax: {}};
      */
     var put = function(pattern, handler) {
       add(pattern, 'put', handler);
+    };
+
+    /**
+     * You can register a resource that will respond to all method requests to a given
+     * set of url patterns. When registering a resource (such as "users"), the following
+     * routes will be registered:
+     *
+     *  - GET /users/
+     *  - POST /users/
+     *  - DELETE /users/:id
+     *  - GET /users/:id
+     *  - PUT /users/:id
+     *  - POST /users/:id
+     *
+     * @param {string} name
+     * @param {function} handler
+     */
+    var resource = function(name, handler) {
+      var idPattern = name+'/:id';
+      
+      get(name, handler);
+      post(name, handler);
+      del(idPattern, handler);
+      get(idPattern, handler);
+      put(idPattern, handler);
+      post(idPattern, handler);
     };
 
     /**
@@ -129,7 +155,8 @@ var Tectonic = Tectonic || {Pjax: {}};
       get: get,
       post: post,
       put: put,
-      "delete": deletion,
+      del: del, // alias for the delete
+      "delete": del,
       match: match,
 
       getRoutes: getRoutes,

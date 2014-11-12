@@ -49,6 +49,10 @@ describe('Router spec', function() {
     expect(router.match('cats', 'delete').length).toBe(1);
   });
 
+  it('should return an empty array when no matches are found', function() {
+    expect(router.match('ljsdfljsdf', 'get').length).toBe(0);
+  });
+
   it('should throw an exception when match behaviour is set to an invalid value', function() {
     expect(function(){router.setMatchBehaviour('gawd')}).toThrow(new Error('Invalid value for router match behaviour. Available options are: single, all.'));
     expect(function(){router.setMatchBehaviour('single')}).not.toThrow();
