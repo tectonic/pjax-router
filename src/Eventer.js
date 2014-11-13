@@ -41,7 +41,8 @@
      */
     var requestCallback = function(when) {
       return function(xhr, options) {
-        var matchedRoutes = Tectonic.Pjax.Router.match(xhr.url, xhr.method, when);
+        var method = determineMethod(xhr);
+        var matchedRoutes = Tectonic.Pjax.Router.match(xhr.url, method, when);
 
         for (var i = 0; i < matchedRoutes.length; i++) {
           handle(matchedRoutes[i].handler);
@@ -71,7 +72,7 @@
 
     // Return our object with the public methods
     return {
-        listen: listen
+      listen: listen
     };
   })();
 })(jQuery);
