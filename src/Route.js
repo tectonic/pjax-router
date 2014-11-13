@@ -10,7 +10,7 @@ var Tectonic = Tectonic || {Pjax: {}};
    * @param callback handler
    * @constructor
    */
-  Tectonic.Pjax.Route = function(pattern, method, handler) {
+  Tectonic.Pjax.Route = function(pattern, method, handler, options) {
     if (typeof pattern !== 'string') {
       throw new Error('You must provide the pattern argument as a string when registering a new Route object.');
     }
@@ -20,6 +20,8 @@ var Tectonic = Tectonic || {Pjax: {}};
     if (typeof handler !== 'function') {
       throw new Error('You must provide the handler argument as a function callback when registering a new Route object.');
     }
+
+    options = options || {when: 'after'};
 
     /**
      * Converts a given pattern into a regular expression which can be used
@@ -46,9 +48,15 @@ var Tectonic = Tectonic || {Pjax: {}};
      * @param string method
      * @returns false if no route matches, or the Route object if it passes.
      */
-    var matches = function(url, method) {
-      if (this.method == method) {
-        return regex.test(url);
+    var matches = function(url, method, when) {
+      when = when || 'after';
+
+      if (
+        route.method == method &&
+        route.options &&
+        route.options.when == when
+      ) {
+        return route.regex.test(url);
       }
 
       return false;
@@ -58,13 +66,16 @@ var Tectonic = Tectonic || {Pjax: {}};
     var regex = regexify(pattern);
 
     // Return the object developers can work with
-    return {
+    var route = {
       pattern: pattern,
       regex: regex,
       method: method,
       handler: handler,
+      options: options,
 
       matches: matches
     };
+
+    return route;
   };
 })();

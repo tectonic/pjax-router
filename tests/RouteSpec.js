@@ -46,5 +46,11 @@ describe('Route spec', function() {
       expect(routeObject.matches('/lkjsdf/23/users/765/lksdf-ksdf874', 'get')).toBe(true);
       expect(routeObject.matches('/lkjsdf/23/users/sdfsdf/lksdf-ksdf874', 'get')).toBe(false);
     });
+
+    it('should define default options if none are provided', function() {
+      var routeObject = Tectonic.Pjax.Route('lkjsflkj', 'get', callback);
+
+      expect(routeObject.options).toEqual({when: 'after'});
+    });
   });
-})
+});

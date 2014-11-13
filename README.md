@@ -41,6 +41,15 @@ There's a few new things here. First and foremost - there's some logic. In this 
 
 Secondly, our route is now supporting url arguments. In this case its an id, and when the route matches, our route handler will be passed the id that was provided as part of the URL. Cool, huh?
 
+### Before and after requests
+
+Most of the time we want to hook our javascript up once a request has returned. The default route registrations therefore set our route calls to be executed once those requests are complete. However, there may be times when we wish to execute code before a request is sent. This is done using the options argument when registering a route. Eg.
+
+```javascript
+route.get('users/:id', userFormCheck, {when: 'before'});
+route.get('users/:id', userFormHandler, {when: 'after'}); // default behaviour
+```
+
 ## Examples
 
 We think it's best to learn from examples, so check them out over at our [examples page](https://github.com/tectonic/pjax-router/wiki/Examples).

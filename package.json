@@ -1,6 +1,6 @@
 {
   "name": "pjax-router",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Front-end javascript router to be paired with jquery-pjax.",
   "main": "",
   "directories": {
@@ -30,7 +30,8 @@
     "pjax",
     "router",
     "routing",
-    "route"
+    "route",
+    "library"
   ],
   "author": "Kirk Bushell",
   "license": "MIT"

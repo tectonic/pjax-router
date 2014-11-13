@@ -32,9 +32,10 @@ var Tectonic = Tectonic || {Pjax: {}};
      *
      * @param {string} pattern
      * @param {function} handler
+     * @param {object} options
      */
-    var get = function(pattern, handler) {
-      add(pattern, 'get', handler);
+    var get = function(pattern, handler, options) {
+      add(pattern, 'get', handler, options);
     };
 
     /**
@@ -42,9 +43,10 @@ var Tectonic = Tectonic || {Pjax: {}};
      *
      * @param {string} pattern
      * @param {function} handler
+     * @param {object} options
      */
-    var post = function(pattern, handler) {
-      add(pattern, 'post', handler);
+    var post = function(pattern, handler, options) {
+      add(pattern, 'post', handler, options);
     };
 
     /**
@@ -52,9 +54,10 @@ var Tectonic = Tectonic || {Pjax: {}};
      *
      * @param {string} pattern
      * @param {function} handler
+     * @param {object} options
      */
-    var del = function(pattern, handler) {
-      add(pattern, 'delete', handler);
+    var del = function(pattern, handler, options) {
+      add(pattern, 'delete', handler, options);
     };
 
     /**
@@ -62,9 +65,23 @@ var Tectonic = Tectonic || {Pjax: {}};
      *
      * @param {string} pattern
      * @param {function} handler
+     * @param {object} options
      */
-    var put = function(pattern, handler) {
-      add(pattern, 'put', handler);
+    var put = function(pattern, handler, options) {
+      add(pattern, 'put', handler, options);
+    };
+
+    /**
+     * Add a new route to the routes array.
+     *
+     * @param {string} pattern
+     * @param {string} method
+     * @param {function} handler
+     * @param {object} options
+     * @uses Tectonic.Pjax.Route
+     */
+    var add = function(pattern, method, handler, options) {
+      routes.push(Tectonic.Pjax.Route(pattern, method, handler, options));
     };
 
     /**
@@ -82,15 +99,15 @@ var Tectonic = Tectonic || {Pjax: {}};
      * @param {string} name
      * @param {function} handler
      */
-    var resource = function(name, handler) {
+    var resource = function(name, handler, options) {
       var idPattern = name+'/:id';
 
-      get(name, handler);
-      post(name, handler);
-      del(idPattern, handler);
-      get(idPattern, handler);
-      put(idPattern, handler);
-      post(idPattern, handler);
+      get(name, handler, options);
+      post(name, handler, options);
+      del(idPattern, handler, options);
+      get(idPattern, handler, options);
+      put(idPattern, handler, options);
+      post(idPattern, handler, options);
     };
 
     /**
@@ -98,13 +115,14 @@ var Tectonic = Tectonic || {Pjax: {}};
      *
      * @param {string} url
      * @param {string} method
+     * @param {string} when
      * @returns {Array}
      */
-    var match = function(url, method) {
+    var match = function(url, method, when) {
       var matchedRoutes = [];
 
       for (var i = 0; i < routes.length; i++) {
-        if (routes[i].matches(url, method)) {
+        if (routes[i].matches(url, method, when)) {
           matchedRoutes.push(routes[i]);
 
           if (matchBehaviour == 'single') {
@@ -127,18 +145,6 @@ var Tectonic = Tectonic || {Pjax: {}};
       }
 
       matchBehaviour = behaviour;
-    };
-
-    /**
-     * Add a new route to the routes array.
-     *
-     * @param {string} pattern
-     * @param {string} method
-     * @param {function} handler
-     * @uses Tectonic.Pjax.Route
-     */
-    var add = function(pattern, method, handler) {
-      routes.push(Tectonic.Pjax.Route(pattern, method, handler));
     };
 
     /**

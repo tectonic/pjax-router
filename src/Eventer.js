@@ -39,20 +39,21 @@ var Tectonic = Tectonic || {Pjax: {}};
          * It attempts to find a matching route for the given URL, and if found
          * will then execute the callback registered for that route.
          *
-         * @param {object} xhr
-         * @param {object} options
+         * @param {string} when
          */
-        var requestCallback = function(xhr, options) {
-            var matchedRoutes = Tectonic.Pjax.Router.match(xhr.url);
+        var requestCallback = function(when) {
+          return function(xhr, options) {
+            var matchedRoutes = Tectonic.Pjax.Router.match(xhr.url, xhr.method, when);
 
             for (var i = 0; i < matchedRoutes.length; i++) {
-                handle(matchedRoutes[i].handler);
+              handle(matchedRoutes[i].handler);
             }
+          };
         };
 
         // Setup our base event listeners
-        listen('pjax:send', requestCallback);
-        listen('pjax:complete', requestCallback);
+        listen('pjax:send', requestCallback('before'));
+        listen('pjax:complete', requestCallback('after'));
 
         // Return our object with the public methods
         return {
