@@ -1,5 +1,3 @@
-var Tectonic = Tectonic || {Pjax: {}};
-
 (function() {
   /**
    * Create a new Route object, with the pattern method and callback handler defined.

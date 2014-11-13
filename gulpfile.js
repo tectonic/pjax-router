@@ -6,7 +6,13 @@ var gulp   = require('gulp'),
   jshint = require('gulp-jshint'),
   rename = require('gulp-rename');
 
-var scripts = ['src/Eventer.js', 'src/Route.js', 'src/Router.js'];
+var scripts = [
+  'src/_Module.js',
+  'src/Config.js',
+  'src/Eventer.js',
+  'src/Route.js',
+  'src/Router.js'
+];
 
 gulp.task('scripts', function() {
   return gulp.src(scripts)

@@ -1,5 +1,3 @@
-var Tectonic = Tectonic || {Pjax: {}};
-
 (function() {
   /**
    * The router class manages the registration of various front-end routes.
@@ -13,19 +11,6 @@ var Tectonic = Tectonic || {Pjax: {}};
      * @type {Array}
      */
     var routes = [];
-
-    /**
-     * It's possible for the router to work in one of two ways. Either:
-     *
-     * 1. It will search for a matched route and then immediately exit matching or
-     * 2. It will run all matched callbacks for a given route.
-     *
-     * This is defined by setting the below property to 'single' or 'all'. The
-     * default behaviour is for the router to stop as soon as it finds a match.
-     *
-     * @type {string}
-     */
-    var matchBehaviour = 'single';
 
     /**
      * Register a new get route.
@@ -125,26 +110,13 @@ var Tectonic = Tectonic || {Pjax: {}};
         if (routes[i].matches(url, method, when)) {
           matchedRoutes.push(routes[i]);
 
-          if (matchBehaviour == 'single') {
+          if (Tectonic.Pjax.Config.get('matchBehaviour') == 'single') {
             break;
           }
         }
       }
 
       return matchedRoutes;
-    };
-
-    /**
-     * Sets the match behaviour for the router.
-     *
-     * @param {string} behaviour
-     */
-    var setMatchBehaviour = function(behaviour) {
-      if (behaviour != 'single' && behaviour != 'all') {
-        throw new Error('Invalid value for router match behaviour. Available options are: single, all.')
-      }
-
-      matchBehaviour = behaviour;
     };
 
     /**
@@ -165,8 +137,7 @@ var Tectonic = Tectonic || {Pjax: {}};
       "delete": del,
       match: match,
 
-      getRoutes: getRoutes,
-      setMatchBehaviour: setMatchBehaviour
+      getRoutes: getRoutes
     };
   })();
 })();
