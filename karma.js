@@ -18,6 +18,7 @@ module.exports = function(config) {
       'src/Eventer.js',
       'src/Route.js',
       'src/Router.js',
+      'src/Utility.js',
       'tests/*Spec.js'
     ],
 

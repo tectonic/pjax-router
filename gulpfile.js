@@ -11,7 +11,8 @@ var scripts = [
   'src/Config.js',
   'src/Eventer.js',
   'src/Route.js',
-  'src/Router.js'
+  'src/Router.js',
+  'src/Utility.js'
 ];
 
 gulp.task('scripts', function() {

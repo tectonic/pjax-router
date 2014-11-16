@@ -120,6 +120,15 @@
     };
 
     /**
+     * Resets the routes array.
+     *
+     * @return void
+     */
+    var clear = function() {
+      routes = [];
+    };
+
+    /**
      * Returns the routes registered with the router.
      *
      * @returns {Array}
@@ -130,6 +139,7 @@
 
     // Return the object that will be publicly available
     return {
+      clear: clear,
       get: get,
       post: post,
       put: put,
