@@ -1,15 +1,19 @@
 describe('Config spec', function() {
   var utility = Tectonic.Pjax.Utility;
+  var xhr = {};
 
   it('should determine the method to be get if provided as part of the xhr', function() {
-    expect(utility.determineHttpVerb({method: 'get'})).toEqual('get');
+    var options = {url: 'http://someurl.com/', type: 'get'};
+    expect(utility.determineHttpVerb(xhr, options)).toEqual('get');
   });
 
   it('should determine the method to be delete if provided as part of the form data', function() {
-    expect(utility.determineHttpVerb({method: 'get', formdata: {_method: 'delete'}})).toEqual('delete');
+    var options = {url: 'http://someurl.com/', type: 'get', data: {_method: 'delete'}};
+    expect(utility.determineHttpVerb(xhr, options)).toEqual('delete');
   });
 
   it('should lowercase the method', function() {
-    expect(utility.determineHttpVerb({method: 'POST'})).toEqual('post');
+    var options = {url: 'http://someurl.com/', type: 'POST'};
+    expect(utility.determineHttpVerb(xhr, options)).toEqual('post');
   });
 });

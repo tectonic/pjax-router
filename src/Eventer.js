@@ -39,27 +39,36 @@
      *
      * @param {string} when
      */
-    var requestCallback = function(when) {
-      return function(xhr, options) {
-        var method = determineMethod(xhr);
-        var matchedRoutes = Tectonic.Pjax.Router.match(xhr.url, method, when);
+    var requestCallback = function(xhr, options, when) {
+      var method = Tectonic.Pjax.Utility.determineHttpVerb(xhr, options);
+      var matchedRoutes = Tectonic.Pjax.Router.match(options.url, method, when);
 
-        for (var i = 0; i < matchedRoutes.length; i++) {
-          // Object that we'll pass to the handler for the callback to deal with, if it needs to
-          var handlerParams = {
-            xhr: xhr,
-            options: options,
-            route: matchedRoutes[i]
-          };
+      for (var i = 0; i < matchedRoutes.length; i++) {
+        // Object that we'll pass to the handler for the callback to deal with, if it needs to
+        var handlerParams = {
+          xhr: xhr,
+          options: options,
+          route: matchedRoutes[i]
+        };
 
-          handle(matchedRoutes[i].handler, handlerParams);
-        }
-      };
+        return handle(matchedRoutes[i].handler, handlerParams);
+        //if (when == 'before') {
+        //  return handle(matchedRoutes[i].handler, handlerParams);
+        //}
+        //else if (when == 'after') {
+        //  return handle(matchedRoutes[i].handler, handlerParams);
+        //}
+      }
     };
 
     // Setup our base event listeners
-    listen('pjax:send', requestCallback('before'));
-    listen('pjax:complete', requestCallback('after'));
+    listen('pjax:send', function(xhr, options) {
+      requestCallback(xhr, options, 'before');
+    });
+
+    listen('pjax:complete', function(xhr, textStatus, options) {
+      requestCallback(xhr, options, 'after');
+    });
 
     // Return our object with the public methods
     return {

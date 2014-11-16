@@ -10,6 +10,8 @@ var scripts = [
   'src/_Module.js',
   'src/Config.js',
   'src/Eventer.js',
+  'src/Request.js',
+  'src/Response.js',
   'src/Route.js',
   'src/Router.js',
   'src/Utility.js'

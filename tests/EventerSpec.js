@@ -5,16 +5,21 @@ describe('Eventer spec', function() {
     router.clear();
   });
 
-  //it('should call the appropriate route callbacks at the correct times', function() {
-  //  var called = false;
-  //  var callback = function() {
-  //    called = true;
-  //  };
-  //
-  //  router.get('some-url', callback);
-  //
-  //  jQuery(document).fire()  //fire('pjax:complete');
-  //
-  //  expect(called).toBe(true);
-  //});
+  it('should call the appropriate route callbacks at the correct times', function() {
+    var called = false;
+    var callback = function() {
+      called = true;
+    };
+
+    var options = {
+      url: 'some-url',
+      type: 'get'
+    };
+
+    router.get('some-url', callback);
+
+    jQuery(document).trigger('pjax:complete', [{}, options]);
+
+    expect(called).toBe(true);
+  });
 });

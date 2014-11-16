@@ -13,11 +13,11 @@
      *
      * @param {object} xhr
      */
-    var determineHttpVerb = function(xhr) {
-      var method = xhr.method;
+    var determineHttpVerb = function(xhr, options) {
+      var method = options.type;
 
-      if (xhr.formdata && xhr.formdata._method) {
-        method = xhr.formdata._method;
+      if (options.data && options.data._method) {
+        method = options.data._method;
       }
 
       return method.toLowerCase();

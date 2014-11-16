@@ -13,6 +13,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'vendor/jquery-1.11.1.min.js',
       'src/_Module.js',
       'src/Config.js',
       'src/Eventer.js',

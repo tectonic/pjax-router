@@ -6,7 +6,7 @@
    * @module Tectonic.Pjax.Request
    * @type {class}
    */
-  Tectonic.Pjax.Request = function(xhr) {
+  Tectonic.Pjax.Request = function(xhr, options) {
     /**
      * The original XHR object.
      *
@@ -15,13 +15,20 @@
     this.xhr = xhr;
 
     /**
+     * The original options object as provided by jquery-pjax.
+     *
+     * @var {object}
+     */
+    this.options = options;
+
+    /**
      * The headers that were sent as part of the request.
      *
      * @var {object
      */
     this.headers = xhr.headers;
-    this.data = xhr.formdata;
-    this.method = Tectonic.Pjax.Utility.determineHttpVerb(xhr);
-    this.url = xhr.url;
+    this.data = options.data;
+    this.method = Tectonic.Pjax.Utility.determineHttpVerb(xhr, options);
+    this.url = options.url;
   };
 });
