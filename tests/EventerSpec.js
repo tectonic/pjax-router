@@ -18,7 +18,25 @@ describe('Eventer spec', function() {
 
     router.get('some-url', callback);
 
-    jQuery(document).trigger('pjax:complete', [{}, options]);
+    jQuery(document).trigger('pjax:end', [{}, options]);
+
+    expect(called).toBe(true);
+  });
+
+  it('should call the appropriate route call back for before filters', function() {
+    var called = false;
+    var callback = function() {
+      called = true;
+    };
+
+    var options = {
+      url: 'some-url',
+      type: 'get'
+    };
+
+    router.get('some-url', callback, {when: 'before'});
+
+    jQuery(document).trigger('pjax:start', [{}, options]);
 
     expect(called).toBe(true);
   });

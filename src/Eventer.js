@@ -52,21 +52,15 @@
         };
 
         return handle(matchedRoutes[i].handler, handlerParams);
-        //if (when == 'before') {
-        //  return handle(matchedRoutes[i].handler, handlerParams);
-        //}
-        //else if (when == 'after') {
-        //  return handle(matchedRoutes[i].handler, handlerParams);
-        //}
       }
     };
 
     // Setup our base event listeners
-    listen('pjax:send', function(xhr, options) {
+    listen('pjax:start', function(event, xhr, options) {
       requestCallback(xhr, options, 'before');
     });
 
-    listen('pjax:complete', function(xhr, textStatus, options) {
+    listen('pjax:end', function(event, xhr, options) {
       requestCallback(xhr, options, 'after');
     });
 
