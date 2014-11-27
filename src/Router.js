@@ -2,9 +2,9 @@
   /**
    * The router class manages the registration of various front-end routes.
    *
-   * @module Tectonic.Pjax.Router
+   * @module Pjax.Router
    */
-  Tectonic.Pjax.Router = (function(){
+  Pjax.Router = (function(){
     /**
      * Stores the registered routes for matching later.
      *
@@ -63,10 +63,10 @@
      * @param {string} method
      * @param {function} handler
      * @param {object} options
-     * @uses Tectonic.Pjax.Route
+     * @uses Pjax.Route
      */
     var add = function(pattern, method, handler, options) {
-      routes.push(Tectonic.Pjax.Route(pattern, method, handler, options));
+      routes.push(Pjax.Route(pattern, method, handler, options));
     };
 
     /**
@@ -110,7 +110,7 @@
         if (routes[i].matches(url, method, when)) {
           matchedRoutes.push(routes[i]);
 
-          if (Tectonic.Pjax.Config.get('matchBehaviour') == 'single') {
+          if (Pjax.Config.get('matchBehaviour') == 'single') {
             break;
           }
         }

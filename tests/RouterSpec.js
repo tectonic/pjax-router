@@ -1,5 +1,5 @@
 describe('Router spec', function() {
-  var router = Tectonic.Pjax.Router;
+  var router = Pjax.Router;
   var callback = function() {};
 
   beforeEach(function() {

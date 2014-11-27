@@ -5,16 +5,16 @@
    * JSON object). It also provides some methods for querying the response. It also contains a reference
    * to the original request made to the server.
    *
-   * @module Tectonic.Pjax.Response
+   * @module Pjax.Response
    * @param {object} xhr
-   * @param {Tectonic.Pjax.Request} request
+   * @param {Pjax.Request} request
    * @type {class}
    */
-  Tectonic.Pjax.Response = function(xhr, request) {
+  Pjax.Response = function(xhr, request) {
     /**
      * Required for nested anonymous functions.
      *
-     * @type {Tectonic.Pjax.Response}
+     * @type {Pjax.Response}
      */
     var that = this;
 
@@ -35,7 +35,7 @@
     /**
      * The original Request object.
      *
-     * @type {Tectonic.Pjax.Request}
+     * @type {Pjax.Request}
      */
     this.request = request;
 

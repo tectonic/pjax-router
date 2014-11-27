@@ -6,11 +6,11 @@
    * time Eventer will search for one or more matching routes. If one is found, it'll execute the callback
    * for that registered route. If no routes are found/matched, it won't do anything.
    *
-   * @module Tectonic.Pjax.Eventer
+   * @module Pjax.Eventer
    * @listens pjax:send
    * @listens pjax:complete
    */
-  Tectonic.Pjax.Eventer = (function() {
+  Pjax.Eventer = (function() {
     /**
      * Setup a new listener for the required event, and register the callback.
      *
@@ -40,8 +40,8 @@
      * @param {string} when
      */
     var requestCallback = function(xhr, options, when) {
-      var method = Tectonic.Pjax.Utility.determineHttpVerb(xhr, options);
-      var matchedRoutes = Tectonic.Pjax.Router.match(options.url, method, when);
+      var method = Pjax.Utility.determineHttpVerb(xhr, options);
+      var matchedRoutes = Pjax.Router.match(options.url, method, when);
 
       for (var i = 0; i < matchedRoutes.length; i++) {
         // Object that we'll pass to the handler for the callback to deal with, if it needs to

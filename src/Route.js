@@ -2,13 +2,13 @@
   /**
    * Create a new Route object, with the pattern method and callback handler defined.
    *
-   * @module Tectonic.Pjax.Route
+   * @module Pjax.Route
    * @param string pattern
    * @param string method
    * @param callback handler
    * @constructor
    */
-  Tectonic.Pjax.Route = function(pattern, method, handler, options) {
+  Pjax.Route = function(pattern, method, handler, options) {
     if (typeof pattern !== 'string') {
       throw new Error('You must provide the pattern argument as a string when registering a new Route object.');
     }

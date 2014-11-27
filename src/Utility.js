@@ -2,9 +2,9 @@
   /**
    * Provides some utility methods for the Pjax library.
    *
-   * @module Tectonic.Pjax.Utility
+   * @module Pjax.Utility
    */
-  Tectonic.Pjax.Utility = (function() {
+  Pjax.Utility = (function() {
     /**
      * There are two ways in which a method can be derived. Because browsers don't fully support all the HTTP
      * verbs, and the fact that frameworks work around this by providing a _method property as part of form

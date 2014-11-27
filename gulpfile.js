@@ -36,5 +36,3 @@ gulp.task('default' , function() {
     gulp.run('scripts');
   });
 });
-
-

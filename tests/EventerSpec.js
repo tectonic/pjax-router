@@ -1,5 +1,5 @@
 describe('Eventer spec', function() {
-  var router = Tectonic.Pjax.Router;
+  var router = Pjax.Router;
 
   beforeEach(function() {
     router.clear();

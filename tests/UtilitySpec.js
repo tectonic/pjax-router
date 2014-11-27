@@ -1,5 +1,5 @@
 describe('Config spec', function() {
-  var utility = Tectonic.Pjax.Utility;
+  var utility = Pjax.Utility;
   var xhr = {};
 
   it('should determine the method to be get if provided as part of the xhr', function() {

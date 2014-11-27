@@ -1,5 +1,5 @@
 describe('Config spec', function() {
-  var config = Tectonic.Pjax.Config;
+  var config = Pjax.Config;
 
   it('should throw an exception when match behaviour is set to an invalid value', function() {
     expect(function(){config.set('matchBehaviour', 'gawd')}).toThrow(new Error('Invalid value for router match behaviour. Available options are: single, all.'));

@@ -3,4 +3,4 @@
  *
  * @type object
  */
-var Tectonic = Tectonic || {Pjax: {}};
+var Pjax = Pjax || {};

@@ -1,5 +1,5 @@
 (function() {
-  Tectonic.Pjax.Config = (function() {
+  Pjax.Config = (function() {
     var config = {
       /**
        * It's possible for the router to work in one of two ways. Either:

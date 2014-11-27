@@ -3,10 +3,10 @@
    * The Request class neatly bundles up the information that was provided as part of the request
    * into an object that can be used to query for information.
    *
-   * @module Tectonic.Pjax.Request
+   * @module Pjax.Request
    * @type {class}
    */
-  Tectonic.Pjax.Request = function(xhr, options) {
+  Pjax.Request = function(xhr, options) {
     /**
      * The original XHR object.
      *
@@ -28,7 +28,7 @@
      */
     this.headers = xhr.headers;
     this.data = options.data;
-    this.method = Tectonic.Pjax.Utility.determineHttpVerb(xhr, options);
+    this.method = Pjax.Utility.determineHttpVerb(xhr, options);
     this.url = options.url;
   };
 });
