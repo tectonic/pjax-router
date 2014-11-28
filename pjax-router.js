@@ -36,7 +36,7 @@ var Pjax = Pjax || {};
        */
       matchBehaviour: function(behaviour) {
         if (behaviour != 'single' && behaviour != 'all') {
-          throw new Error('Invalid value for router match behaviour. Available options are: single, all.')
+          throw new Error('Invalid value for router match behaviour. Available options are: single, all.');
         }
 
         config.matchBehaviour = behaviour;
@@ -184,7 +184,7 @@ var Pjax = Pjax || {};
     this.method = Pjax.Utility.determineHttpVerb(xhr, options);
     this.url = options.url;
   };
-});
+})();
 
 (function() {
   /**
@@ -251,7 +251,7 @@ var Pjax = Pjax || {};
       return !this.isJSON();
     };
   };
-});
+})();
 
 (function() {
   /**

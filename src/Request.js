@@ -31,4 +31,4 @@
     this.method = Pjax.Utility.determineHttpVerb(xhr, options);
     this.url = options.url;
   };
-});
+})();

@@ -1,5 +1,6 @@
 // Load all the required plugins.
 var gulp   = require('gulp'),
+  jshint = require('gulp-jshint'),
   notify = require('gulp-notify'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
@@ -18,7 +19,8 @@ var scripts = [
 ];
 
 gulp.task('scripts', function() {
-  return gulp.src(scripts)
+  return gulp.src(scripts).pipe(jshint())
+	.pipe(jshint.reporter('default'))
     .pipe(concat('pjax-router.js'))
     .pipe(gulp.dest('.'))
     .pipe(rename('pjax-router.min.js'))
