@@ -29,14 +29,16 @@
      * @return RegExp
      */
     var regexify = function(pattern) {
-      pattern = pattern
+      var replacedPattern = pattern
         .replace(/:any/gi, '(.*)')
         .replace(/:id/gi, '([0-9]+)')
         .replace(/:alphanum/gi, '([a-z0-9\\-]+)')
         .replace(/:alpha/gi, '([a-z\\-]+)')
         .replace(/:(?=\/)+/gi, '([^/]+)');
 
-      return new RegExp(pattern);
+      var fullPattern = replacedPattern+'\\/?$';
+
+      return new RegExp(fullPattern);
     };
 
     /**

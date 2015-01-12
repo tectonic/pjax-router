@@ -6,7 +6,7 @@ describe('Route spec', function() {
       var routeObject = Pjax.Route('some-url', 'get', callback);
 
       expect(routeObject.pattern).toEqual('some-url');
-      expect(routeObject.regex).toEqual(/some-url/);
+      expect(routeObject.regex).toEqual(/some-url\/?$/);
       expect(routeObject.method).toEqual('get');
       expect(routeObject.handler).toEqual(callback);
     });
@@ -51,6 +51,13 @@ describe('Route spec', function() {
       var routeObject = Pjax.Route('lkjsflkj', 'get', callback);
 
       expect(routeObject.options).toEqual({when: 'after'});
+    });
+
+    it('should not match routes that go beyond its capabilities', function() {
+      var routeObject = Pjax.Route(':alpha/:id/users', 'get', callback);
+
+      expect(routeObject.matches('/alpha/23', 'get')).toBe(false);
+      expect(routeObject.matches('/alpha/23/users', 'get')).toBe(true);
     });
   });
 });
