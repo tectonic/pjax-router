@@ -10,12 +10,13 @@ var gulp   = require('gulp'),
 var scripts = [
   'src/_Module.js',
   'src/Config.js',
+  'src/Route.js',
+  'src/Router.js',
   'src/Eventer.js',
   'src/Request.js',
   'src/Response.js',
-  'src/Route.js',
-  'src/Router.js',
-  'src/Utility.js'
+  'src/Utility.js',
+  'src/Init.js'
 ];
 
 gulp.task('scripts', function() {

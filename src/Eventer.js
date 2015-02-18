@@ -7,10 +7,10 @@
    * for that registered route. If no routes are found/matched, it won't do anything.
    *
    * @module Pjax.Eventer
-   * @listens pjax:send
-   * @listens pjax:complete
+   * @listens pjax:start
+   * @listens pjax:end
    */
-  Pjax.Eventer = (function() {
+  Pjax.Eventer = (function($) {
     /**
      * Setup a new listener for the required event, and register the callback.
      *
@@ -62,25 +62,6 @@
 
     listen('pjax:end', function(event, xhr, options) {
       requestCallback(xhr, options, 'after');
-    });
-
-    /**
-     * When the page first loads up, PJAX will not be firing, so we want to make a match against
-     * the current document/window URL, and pass this information to the correct handler which
-     * should be able to handle both.
-     */
-    $(document).ready(function() {
-      var matchedRoutes = Pjax.Router.match(window.location.href, 'get', 'after');
-
-      for (var i = 0; i < matchedRoutes.length; i++) {
-        var handlerParams = {
-          xhr: null,
-          options: null,
-          route: matchedRoutes[i]
-        };
-
-        return handle(matchedRoutes[i].handler, handlerParams);
-      }
     });
 
     // Return our object with the public methods
